@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+\usepackage{lipsum} % to generate some filler text
+
+
+% import Eq and Section references from the main manuscript if needed
+% \usepackage{xr}
+% \externaldocument{manuscript}
+
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% This refines the format of how the reviewer/point reference will appear.
+\renewcommand{\thepoint}{Q\,\thereviewer.\arabic{point}} 
+
+% command declarations for reviewer points and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer}
+                  \section*{Reviewer \thereviewer}}
+\newcommand{\point}[1]{\refstepcounter{point}  \bigskip \hrule \medskip \noindent 
+               \textsl{{\fontseries{b}\selectfont \thepoint } \medskip #1}\par}
+\newcommand{\reply}{\medskip \noindent \textbf{Reply}:\ }   
+
+
+\begin{document}
+% title of the paper
+\begin{center}
+\Large\bfseries
+	Revision of: \\ 
+	Title of Your Paper
+\end{center}
+% list of authors 
+\begin{center}
+\small
+First Author, Second Author, and Last Author \\
+\today
+\end{center}
+
+
+\title{Responses to Review Comments on ``Title of Your Paper'' \\
+  \vspace{0.5em} \large \emph{First round of reviewing}}
+\author{First Author \and Second Author \and Third Author}
+
+\noindent
+We thank the anonymous Reviewers for their efforts and feedback. 
+The following briefly discusses how the paper was revised in response to the comments provided by the reviewers. In summary we have done this and that.
+
+
+% General intro text goes here
+\reviewersection
+
+\point{Point one description \label{pt:foo}}
+\reply{\lipsum[1]} 
+
+\reviewersection
+
+\point{First point of Reviewer \thereviewer}
+\reply{This point was already answered as \ref{pt:foo}.}
+
+\point{Description of second point \label{pt:bar}}
+\reply{\lipsum[7-8]}
+
+\end{document}
